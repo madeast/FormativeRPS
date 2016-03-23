@@ -33,12 +33,28 @@ public class RPSPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		plPaper = new JButton("Paper");
+		
 		plRock = new JButton("Rock");
+		baseLayout.putConstraint(SpringLayout.NORTH, plPaper, 0, SpringLayout.NORTH, plRock);
+		baseLayout.putConstraint(SpringLayout.WEST, plRock, 174, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, plRock, -10, SpringLayout.SOUTH, this);
 		plScissor = new JButton("Scissor");
+		baseLayout.putConstraint(SpringLayout.NORTH, plScissor, 0, SpringLayout.NORTH, plRock);
+		baseLayout.putConstraint(SpringLayout.EAST, plScissor, -46, SpringLayout.EAST, this);
 		rpsTextField = new JTextField("Results");
+		baseLayout.putConstraint(SpringLayout.NORTH, rpsTextField, 54, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, rpsTextField, -89, SpringLayout.EAST, plRock);
+		baseLayout.putConstraint(SpringLayout.SOUTH, rpsTextField, 155, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, rpsTextField, 24, SpringLayout.EAST, plRock);
 		winLabel = new JLabel("Wins: " + plWin);
+		baseLayout.putConstraint(SpringLayout.SOUTH, winLabel, -19, SpringLayout.NORTH, plPaper);
+		baseLayout.putConstraint(SpringLayout.EAST, winLabel, 0, SpringLayout.EAST, plPaper);
 		loseLabel = new JLabel("Loses: " + plLose);
+		baseLayout.putConstraint(SpringLayout.NORTH, loseLabel, 0, SpringLayout.NORTH, winLabel);
+		baseLayout.putConstraint(SpringLayout.EAST, loseLabel, -52, SpringLayout.EAST, this);
 		tieLabel = new JLabel("Ties: " + plTie);
+		baseLayout.putConstraint(SpringLayout.NORTH, tieLabel, 0, SpringLayout.NORTH, winLabel);
+		baseLayout.putConstraint(SpringLayout.EAST, tieLabel, 0, SpringLayout.EAST, plRock);
 		userChoice = new JLabel("");
 		plWin = 0;
 		plLose = 0;
@@ -46,13 +62,7 @@ public class RPSPanel extends JPanel
 		
 		setupPanel();
 		setupLayout();
-		setupRPSPane();
 		setupListeners();
-	}
-	
-	private void setupRPSPane()
-	{
-		
 	}
 	
 	private void setupPanel()
@@ -87,6 +97,18 @@ public class RPSPanel extends JPanel
 					rpsTextField.setText(baseController.cpuChoice);
 					plTie++;
 				}
+				
+				if(baseController.cpuChoice.equals("Rock") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plWin++;
+				}
+				
+				if(baseController.cpuChoice.equals("Scissors") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plLose++;
+				}
 			}
 		});
 		
@@ -102,10 +124,16 @@ public class RPSPanel extends JPanel
 					plTie++;
 				}
 				
-				if(baseController.cpuChoice.equals("Paper") == true)
+				if(baseController.cpuChoice.equals("Rock") == true)
 				{
 					rpsTextField.setText(baseController.cpuChoice);
 					plLose++;
+				}
+				
+				if(baseController.cpuChoice.equals("Scissors") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plWin++;
 				}
 			}
 		});

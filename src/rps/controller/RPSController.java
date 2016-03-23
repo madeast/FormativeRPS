@@ -12,7 +12,7 @@ public class RPSController
 	private RPSFrame baseFrame;
 	
 
-	public void RPSController()
+	public  RPSController()
 	{
 		baseFrame = new RPSFrame(this);
 		plChoice = "";
@@ -31,31 +31,23 @@ public class RPSController
 		robotPlay = "";
 		randomInt = (int) (Math.random() * 3);
 		
-		if(randomInt == 0)
-		{
-			robotPlay = "Rock";
-		}
-		
-		if(randomInt == 1)
-		{
-			robotPlay = "Paper";
-		}
-		
-		if(randomInt == 2)
-		{
-			robotPlay = "Scissor";
-		}
-		
-		return robotPlay;
-	}
 	
-	public String gameChecker()
-	{
-		return String;
-	}
-	public int scoreChecker()
-	{	
-		return null;
+			if(randomInt == 0)
+			{
+				robotPlay = "Rock";
+			}
+		
+			if(randomInt == 1)
+			{
+				robotPlay = "Paper";
+			}
+		
+			if(randomInt == 2)
+			{
+				robotPlay = "Scissor";
+			}
+			
+			return robotPlay;
 	}
 	
 	public String getPlChoice()
