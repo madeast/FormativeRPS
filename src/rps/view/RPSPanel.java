@@ -40,6 +40,9 @@ public class RPSPanel extends JPanel
 		loseLabel = new JLabel("Loses: " + plLose);
 		tieLabel = new JLabel("Ties: " + plTie);
 		userChoice = new JLabel("");
+		plWin = 0;
+		plLose = 0;
+		plTie = 0;
 		
 		setupPanel();
 		setupLayout();
@@ -78,6 +81,12 @@ public class RPSPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				userChoice.setText("Rock"); 
+				
+				if(baseController.cpuChoice.equals(userChoice) == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plTie++;
+				}
 			}
 		});
 		
@@ -86,6 +95,18 @@ public class RPSPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				userChoice.setText("Paper");
+				
+				if(baseController.cpuChoice.equals(userChoice) == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plTie++;
+				}
+				
+				if(baseController.cpuChoice.equals("Paper") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plLose++;
+				}
 			}
 		});
 		
@@ -97,10 +118,22 @@ public class RPSPanel extends JPanel
 				
 				if(baseController.cpuChoice.equals(userChoice) == true)
 				{
-					rpsTextField.setText(cpuChoice);
-					plWin++;
-		
+					rpsTextField.setText(baseController.cpuChoice);
+					plTie++;
 				}
+				
+				if(baseController.cpuChoice.equals("Rock") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plWin++;
+				}
+				
+				if(baseController.cpuChoice.equals("Paper") == true)
+				{
+					rpsTextField.setText(baseController.cpuChoice);
+					plLose++;
+				}
+				
 			}
 		});
 	}
